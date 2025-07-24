@@ -1,0 +1,280 @@
+# =======================
+# VOD Platform .gitignore
+# =======================
+
+# Operating System Files
+# -----------------------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*~
+
+# IDE & Editor Files
+# ------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.sublime-*
+*.sublime-workspace
+*.sublime-project
+
+# Node.js Dependencies
+# --------------------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+.npm
+.yarn-integrity
+
+# Python Dependencies & Cache
+# ---------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+pip-log.txt
+pip-delete-this-directory.txt
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# Docker Files
+# ------------
+# Keep docker-compose.yml but ignore overrides
+docker-compose.override.yml
+docker-compose.*.yml
+!docker-compose.yml
+
+# Logs & Runtime Data
+# -------------------
+*.log
+logs/
+*.pid
+*.seed
+*.pid.lock
+.grunt
+lib-cov
+coverage/
+.nyc_output
+.node_repl_history
+*.tgz
+.npm-debug.log*
+
+# Build Outputs & Distribution
+# ----------------------------
+dist/
+build/
+*.tar.gz
+*.zip
+
+# Database Files
+# --------------
+*.db
+*.sqlite
+*.sqlite3
+pgdata/
+postgres_data/
+redis_data/
+
+# Environment Variables
+# ---------------------
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*.local
+
+# Secrets & Security
+# ------------------
+*.pem
+*.key
+*.crt
+*.csr
+secrets/
+private/
+credentials/
+
+# Terraform Files
+# ---------------
+*.tfstate
+*.tfstate.*
+*.tfplan
+*.tfvars
+!*.tfvars.example
+.terraform/
+.terraform.lock.hcl
+terraform.rc
+.terraformrc
+
+# AWS & Cloud Files
+# -----------------
+.aws/
+*.pem
+aws-exports.js
+
+# Kubernetes Secrets
+# ------------------
+*-secret.yaml
+*-secrets.yaml
+secret.yaml
+secrets.yaml
+
+# Monitoring & Logs
+# -----------------
+prometheus_data/
+grafana_data/
+elasticsearch_data/
+kibana_data/
+*.log
+
+# Local Development
+# -----------------
+.local/
+tmp/
+temp/
+.tmp/
+.temp/
+
+# Backup Files
+# ------------
+*.backup
+*.bak
+*.orig
+*.save
+
+# Test Files
+# ----------
+.coverage
+test-results/
+coverage/
+test_*.html
+.pytest_cache/
+
+# Documentation Generated
+# -----------------------
+docs/_build/
+site/
+
+# MacOS Specific
+# --------------
+.AppleDouble
+.LSOverride
+Icon
+.DocumentRevisions-V100
+.fseventsd
+.TemporaryItems
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Windows Specific
+# ----------------
+$RECYCLE.BIN/
+Desktop.ini
+ehthumbs_vista.db
+
+# Linux Specific
+# --------------
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# Project Specific
+# ----------------
+# Uncomment lines below to ignore specific project files
+
+# Local configuration overrides
+# config/local.js
+# config/development.js
+
+# Production builds
+# frontend/dist/
+
+# Database dumps
+# *.sql
+# dumps/
+
+# SSL certificates (if storing locally)
+# ssl/
+# certs/
+
+# Local scripts
+# scripts/local_*
+
+# Cache directories
+.cache/
+.parcel-cache/
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# nyc test coverage
+.nyc_output
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Optional eslint cache
+.eslintcache
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variables file
+.env
+.env.test
+
+# Next.js build output
+.next
+
+# Nuxt.js build output
+.nuxt
+
+# Storybook build outputs
+.out
+.storybook-out
+
+# vuepress build output
+.vuepress/dist
+
+# Serverless directories
+.serverless
+
+# DynamoDB Local files
+.dynamodb
+
+# TernJS port file
+.tern-port
+
+# =======================
+# END VOD Platform .gitignore
+# =======================

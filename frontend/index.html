@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 VOD Platform - Demo</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>🎬 VOD Platform</h1>
+                <span class="beta-badge">DEMO</span>
+            </div>
+            
+            <nav class="nav-menu">
+                <a href="#" class="nav-link active" onclick="showSection('home')">Inicio</a>
+                <a href="#" class="nav-link" onclick="showSection('browse')">Explorar</a>
+                <a href="#" class="nav-link" onclick="showSection('stats')">Stats</a>
+            </nav>
+            
+            <div class="auth-section">
+                <div id="login-form" class="auth-form">
+                    <input type="email" id="email" placeholder="Email" value="demo@vodplatform.com">
+                    <input type="password" id="password" placeholder="Password" value="demo123">
+                    <button onclick="login()" class="btn-primary">Iniciar Sesión</button>
+                </div>
+                <div id="user-info" class="user-info" style="display: none;">
+                    <span id="user-name">Usuario</span>
+                    <button onclick="logout()" class="btn-secondary">Cerrar Sesión</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            
+            <!-- Home Section -->
+            <section id="home-section" class="content-section active">
+                <!-- Hero Banner -->
+                <div class="hero-banner">
+                    <div class="hero-content">
+                        <h2>Bienvenido a VOD Platform</h2>
+                        <p>Explora contenido educativo sobre cloud computing, DevOps y tecnología</p>
+                        <div class="hero-actions">
+                            <button onclick="showSection('browse')" class="btn-primary btn-large">
+                                🎯 Explorar Contenido
+                            </button>
+                            <button onclick="showStats()" class="btn-outline">
+                                📊 Ver Estadísticas
+                            </button>
+                        </div>
+                    </div>
+                    <div class="hero-video">
+                        <div class="video-placeholder">
+                            <span>🎬</span>
+                            <p>Video de demostración</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Featured Content -->
+                <div class="section-header">
+                    <h3>✨ Contenido Destacado</h3>
+                    <button onclick="loadFeaturedContent()" class="btn-refresh">🔄 Actualizar</button>
+                </div>
+                <div id="featured-content" class="content-grid">
+                    <div class="loading-placeholder">Cargando contenido destacado...</div>
+                </div>
+            </section>
+
+            <!-- Browse Section -->
+            <section id="browse-section" class="content-section">
+                <!-- Search and Filters -->
+                <div class="search-section">
+                    <div class="search-bar">
+                        <input type="text" id="search-input" placeholder="🔍 Buscar contenido..." onkeyup="handleSearch()">
+                        <button onclick="performSearch()" class="btn-search">Buscar</button>
+                    </div>
+                    
+                    <div class="filters">
+                        <select id="genre-filter" onchange="applyFilters()">
+                            <option value="">📚 Todos los géneros</option>
+                            <option value="Educational">Educativo</option>
+                            <option value="Technology">Tecnología</option>
+                            <option value="Documentary">Documental</option>
+                            <option value="DevOps">DevOps</option>
+                            <option value="Programming">Programación</option>
+                        </select>
+                        
+                        <select id="sort-filter" onchange="applyFilters()">
+                            <option value="title">📝 Por Título</option>
+                            <option value="views">👁️ Por Popularidad</option>
+                            <option value="likes">❤️ Por Likes</option>
+                            <option value="release_date">📅 Por Fecha</option>
+                        </select>
+                        
+                        <button onclick="clearFilters()" class="btn-clear">❌ Limpiar</button>
+                    </div>
+                </div>
+
+                <!-- Content Grid -->
+                <div class="section-header">
+                    <h3 id="content-title">🎬 Todo el Contenido</h3>
+                    <span id="content-count" class="count-badge">0 elementos</span>
+                </div>
+                <div id="content-grid" class="content-grid">
+                    <div class="loading-placeholder">Cargando contenido...</div>
+                </div>
+            </section>
+
+            <!-- Stats Section -->
+            <section id="stats-section" class="content-section">
+                <div class="section-header">
+                    <h3>📊 Estadísticas de la Plataforma</h3>
+                    <button onclick="loadStats()" class="btn-refresh">🔄 Actualizar</button>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">🎬</div>
+                        <div class="stat-value" id="total-content">0</div>
+                        <div class="stat-label">Total Contenido</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">👁️</div>
+                        <div class="stat-value" id="total-views">0</div>
+                        <div class="stat-label">Total Visualizaciones</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">❤️</div>
+                        <div class="stat-value" id="total-likes">0</div>
+                        <div class="stat-label">Total Likes</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⏱️</div>
+                        <div class="stat-value" id="avg-duration">0</div>
+                        <div class="stat-label">Duración Promedio</div>
+                    </div>
+                </div>
+
+                <div class="charts-section">
+                    <div class="chart-card">
+                        <h4>📈 Contenido por Género</h4>
+                        <div id="genre-chart" class="chart-placeholder">
+                            <p>Cargando gráficos...</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Video Player Modal -->
+    <div id="video-player-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="player-title">Reproduciendo Video</h3>
+                <button onclick="closeVideoPlayer()" class="btn-close">❌</button>
+            </div>
+            <div class="video-container">
+                <video id="main-video" controls width="100%">
+                    <source id="video-source" src="" type="video/mp4">
+                    Tu navegador no soporta video HTML5.
+                </video>
+            </div>
+            <div class="video-info">
+                <p id="video-description">Descripción del video...</p>
+                <div class="video-meta">
+                    <span id="video-duration">Duración: --</span>
+                    <span id="video-genre">Género: --</span>
+                    <span id="video-rating">Rating: --</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>🎬 VOD Platform</h4>
+                    <p>Plataforma de demostración para arquitectura cloud escalable</p>
+                </div>
+                <div class="footer-section">
+                    <h4>🔗 Enlaces</h4>
+                    <a href="#" onclick="showSection('home')">Inicio</a>
+                    <a href="#" onclick="showSection('browse')">Explorar</a>
+                    <a href="#" onclick="showSection('stats')">Estadísticas</a>
+                </div>
+                <div class="footer-section">
+                    <h4>📊 Estado del Sistema</h4>
+                    <div class="system-status">
+                        <span>API Gateway: <span id="api-status" class="status-indicator">🟡</span></span>
+                        <span>Content Service: <span id="content-status" class="status-indicator">🟡</span></span>
+                        <span>Prometheus: <span id="prometheus-status" class="status-indicator">🟡</span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 VOD Platform - Proyecto de Portafolio para Arquitectura Cloud</p>
+                <div class="tech-stack">
+                    <span>⚡ Docker</span>
+                    <span>☸️ Kubernetes</span>
+                    <span>🏗️ Terraform</span>
+                    <span>🔄 GitHub Actions</span>
+                    <span>📊 Prometheus</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
